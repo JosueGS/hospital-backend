@@ -5,7 +5,9 @@ const dbConnection = async()=>{
     try {
         await mongoose.connect(process.env.DB_CNN, {
             useNewUrlParser: true, 
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false
         });
 
         console.log('BD online');
@@ -15,7 +17,6 @@ const dbConnection = async()=>{
 
         throw new Error('Error al iniciar la BD ver logs')
     }
-
 
 
 }
