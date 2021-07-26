@@ -94,13 +94,23 @@ const googleSyncIN = async(req, res=response) =>{
             ok:true,
             msg:'Token invalido'
         });
-    }
+    };
+};
 
+const renewToken = async(req, res=response) =>{
+    
+    const uid = req.uid;
+    //Generear token - JWT
+    const token =  await generarJWT(uid);
 
+    res.json({
+        ok:true,
+        token
+    })
 }
-
 
 module.exports = {
     login,
-    googleSyncIN
+    googleSyncIN,
+    renewToken
 }
